@@ -1,0 +1,14 @@
+{
+  "name": "find-leaf-nodes",
+  "version": "1.0.0",
+  "description": "to find all the leaf nodes of a binary tree which contain ore than 10 depth ",
+  "main": "index.js",
+  "type":"module",
+  "scripts": {
+    
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node binarySearchTree.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
