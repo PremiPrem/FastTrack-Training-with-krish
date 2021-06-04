@@ -1,0 +1,29 @@
+ 
+.number-input{
+    width: 50%;
+    height: 50px;
+    margin: 0 auto;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid green;
+}
+
+.btn-click{
+    width: 50%;
+    height: 50px;
+    margin: 0 auto;
+    margin-top: 40px;
+
+
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 200px; */
+  border: 3px solid green;
+}
+
+
+
+

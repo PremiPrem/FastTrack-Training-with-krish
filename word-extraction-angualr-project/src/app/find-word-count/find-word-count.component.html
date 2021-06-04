@@ -1,0 +1,35 @@
+<div class="container">
+   
+        <form [formGroup]="form" (ngSubmit)="submitForm()">             
+            <div  >
+                <!-- <input type="text" class=" number-input" placeholder="add text" formControlName="insertText"> -->
+                <textarea class="number-input" name="" id="" cols="30" rows="50" formControlName="insertText" placeholder="add your text here"></textarea>
+            </div>
+            
+            <div >
+                <button class="btn-click">Submit</button>
+              
+            </div>
+        </form>
+    
+        <ng-container *ngIf="show">
+            <div style="margin: 0 auto;text-align: left;">
+                <table class="table" style="text-align: center;">
+                    <thead>
+                       <tr>
+                          <th>Words</th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                       <tr *ngFor="let word of words">
+                          <td>{{ word }}</td>
+                          
+                       </tr>
+                    </tbody>
+                 </table>
+                // let  of words 
+            </div>
+        </ng-container>
+    
+
+</div>
