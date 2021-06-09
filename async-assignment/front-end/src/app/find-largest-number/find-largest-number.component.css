@@ -1,0 +1,53 @@
+.content-form{
+   
+    margin: 0 auto;
+    width: 500px;
+    margin-top: 60px;
+
+    /* margin: 0; */
+    margin: auto;
+    /* width: 250px; */
+    border: 3px solid green;
+    padding: 10px;
+    height: 250px;
+
+}
+
+
+
+.center-div{
+    margin: 5px auto;
+
+    
+}
+.number-input{
+    width: 100%;
+    height: 50px;
+    margin: 0 auto;
+    /* margin-top: 40px; */
+
+
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 200px; */
+  border: 3px solid green;
+}
+
+.btn-click{
+    width: 50%;
+    height: 50px;
+    margin: 0 auto;
+    margin-top: 40px;
+
+
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 200px; */
+  border: 3px solid green;
+}
+
+
+
+

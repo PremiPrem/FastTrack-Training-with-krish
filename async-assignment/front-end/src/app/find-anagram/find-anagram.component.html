@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="content-form">
+        <form [formGroup]="form" (ngSubmit)="submitForm()">             
+            <div class="center-div" >
+                <input type="text" class=" text-input number-input" placeholder="add first text" formControlName="firstText">
+            </div>
+            <div class="center-div" >
+                <input type="text" class=" text-input number-input" placeholder="add second text" formControlName="secondText">
+            </div>
+            <div class="center-div">
+                <button class="center-div btn-click">Click!!</button>
+              
+            </div>
+        </form>
+    </div>
+    
+</div>
