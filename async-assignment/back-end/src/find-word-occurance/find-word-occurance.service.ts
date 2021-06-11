@@ -2,7 +2,9 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class FindWordOccuranceService {
-    findOccuranceOfWord(text){
+
+   //Promise
+    findOccuranceOfWord(text): Promise<any>{
             var str= text.sentence;
             var numberOfSingleSpace;
             var count = {}; 
@@ -53,6 +55,11 @@ export class FindWordOccuranceService {
                     spacei="";
                 }
             }        
-            return countCharecters (str) 
+           var result= countCharecters(str) ;
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                  resolve(result); 
+                }, 2000);
+              });
     }
 }

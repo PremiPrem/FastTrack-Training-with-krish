@@ -11,8 +11,8 @@ export class FindLargestNumberController {
     }
 
     @Post('find-largest-number')
-    async findLargestNumber(@Body() number: []){
-             return await this.service.findnthNumber(number);
+    findLargestNumber(@Body() number: []){
+             return this.service.findnthNumber(number);
             
     }
 }
