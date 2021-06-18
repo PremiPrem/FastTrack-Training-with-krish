@@ -1,0 +1,187 @@
+<div class="card">
+    <div class="card-header">
+        {{title}} 
+        
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2"> Pet Detail Filter:</div>
+            <div class="col-md-4">
+                <input type="text" />
+            </div>
+            <button class="col-md-2 btn btn-primary" (click)="open(content)">Add Pet</button>
+            <!-- <button class="col-md-2 btn btn-primary" >Add</button> -->
+            <!-- <button class="btn btn-lg btn-outline-primary" (click)="open(mymodal)">Open My Modal</button>   -->
+        </div> 
+        <div class="row">
+            <div class="col-md-6">
+                <h6>Filtered by </h6>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table" *ngIf="pets.length"  >
+                <thead>
+                    <tr>
+                    <th>Pet Name</th>
+                    <th>Pet Author Name</th>
+                    <th>Breed</th>
+                    <th>Date of Birth</th>
+                    <th> Breeder's Address</th>
+                </tr>
+            </thead>
+            <tbody>
+               <tr *ngFor="let pet of pets" >
+                   <td>{{pet.petName}}</td>
+                   <td>{{pet.petAuthorName}}</td>
+                   <td>{{pet.breed}}</td>
+                   <td>{{pet.dob}}</td>
+                   <td>{{pet.breedAddress}}</td>
+
+                   <td><button class="btn btn-primary" value="{{pet._id}}" (click)="openEditModal(contentEdit, pet._id)">Edit</button></td>
+                   <td><button class="btn btn-primary" value="{{pet._id}}" (click)="deletePet(pet._id)">Delete</button></td>
+               </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- add pet details modal  -->
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <form [formGroup]="addPetForm" (ngSubmit)="addpetDetails()">
+        <div class="modal-body">
+      
+        <div class="form-group">
+          <label for="petName">Pet Name</label>
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="petName" placeholder="Enter Pet Name" required>
+            <!-- <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+            </div> -->
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="dateOfBirth">Pet Owner's Name</label>
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="petAuthorName" placeholder="Enter name" required>
+              <!-- <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+              </div> -->
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="breed">Breed of the Pet</label>
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="breed" placeholder="Enter Breed of Pet" required>
+              <!-- <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+              </div> -->
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="dateOfBirth">Date of Birth</label>
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="dob" placeholder="Enter Date of Birth of Pet" required>
+              <!-- <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="dob.toggle()" type="button"></button>
+              </div> -->
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="breederAddress">Breeder's Address</label>
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="breedAddress" placeholder="Enter Breeder's Address " required>
+              <!-- <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+              </div> -->
+            </div>
+          </div>
+          
+      <!-- </form> -->
+    </div>
+    <div class="modal-footer">
+      <button  class="btn btn-outline-dark" type="submit"  (click)="modal.dismiss('Cross click')">Save</button>
+    </div>
+    </form>
+  </ng-template>
+
+
+
+  <!-- Edit and Update pet details modal  -->
+<ng-template #contentEdit let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Edit Pet Details</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form [formGroup]="EditPetForm" (ngSubmit)="editPetDetails()">
+      <div class="modal-body">
+    
+      <div class="form-group">
+        <label for="petName">Pet Name</label>
+        <div class="input-group">
+          <input type="text" class="form-control" formControlName="petName"  [(ngModel)]="petById.petName" required>
+          <!-- <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+          </div> -->
+        </div>
+      </div>
+      <div class="form-group">
+          <label for="dateOfBirth">Pet Owner's Name</label>
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="petAuthorName" [(ngModel)]="petById.petAuthorName" required>
+            <!-- <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+            </div> -->
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="breed">Breed of the Pet</label>
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="breed" [(ngModel)]="petById.breed" required>
+            <!-- <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+            </div> -->
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="dateOfBirth">Date of Birth</label>
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="dob" [(ngModel)]="petById.dob" required>
+            <!-- <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="dob.toggle()" type="button"></button>
+            </div> -->
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="breederAddress">Breeder's Address</label>
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="breedAddress" [(ngModel)]="petById.breedAddress" required>
+            <!-- <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+            </div> -->
+          </div>
+        </div>
+        
+    <!-- </form> -->
+  </div>
+  <input type="hidden" class="form-control" formControlName="_id" [(ngModel)]="petById._id" required>
+  <div class="modal-footer">
+    <button  class="btn btn-outline-dark" type="submit"  (click)="modal.dismiss('Cross click')">Save</button>
+  </div>
+  </form>
+</ng-template>
+  
+  
+  
+  <hr>
+  
+  <pre>{{ closeResult }}</pre>   
